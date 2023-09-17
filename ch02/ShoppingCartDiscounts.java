@@ -40,5 +40,11 @@ public class ShoppingCartDiscounts {
         assert(cart.getDiscountPercentage() == 5);
         System.out.println(cart.getDiscountPercentage());
 
+        List<String> itemsBad = cart.getItems();
+        itemsBad.remove("Book");
+
+        assert(!cart.getItems().contains("Book"));
+        assert(cart.getDiscountPercentage() == 5);  // 
+
     }
 }

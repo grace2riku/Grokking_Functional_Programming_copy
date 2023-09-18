@@ -52,6 +52,38 @@ public class ShoppingCartDiscounts {
     }
 
 
+    static class ShoppingCartWithRemove {  // named ShoppingCart in the book
+        private List<String> items = new ArrayList<>();
+        private boolean bookAdded = false;
+
+        public void addItem(String item) {
+            items.add(item);
+            if (item.equals("Book")) {
+                bookAdded = true;
+            }
+        }
+        
+        public int getDiscountPercentage() {
+            if (bookAdded) {
+                return 5;
+            } else {
+                return 0;
+            }
+        }
+
+        public List<String> getItems() {
+            return new ArrayList<>(items);
+        }
+
+        public void removeItem(String item) {
+            items.remove(item);
+            if (item.equals("Book")) {
+                bookAdded = false;
+            }
+        }
+    }
+
+    
     public static void main(String[] args) {
         {
             ShoppingCart cart = new ShoppingCart();
@@ -92,5 +124,16 @@ public class ShoppingCartDiscounts {
             assert(cart.getDiscountPercentage() == 5);
         }
 
+        // PROBLEM 2: ch02 2.5
+        {
+            ShoppingCartWithRemove cart = new ShoppingCartWithRemove();
+            cart.addItem("Book");
+            cart.addItem("Book");
+            assert(cart.getDiscountPercentage() == 5);
+            cart.removeItem("Book");
+
+            assert(cart.getItems().contains("Book"));   // a book is in the cart
+            assert(cart.getDiscountPercentage() == 0);  // BUT THE DISCOUNT IS 0!!!
+        }
     }
 }

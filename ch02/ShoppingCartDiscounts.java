@@ -108,7 +108,15 @@ public class ShoppingCartDiscounts {
         }
     }
 
-
+    static class ShoppingCart {
+        public static int getDiscountPercentage(List<String> items) {
+            if (items.contains("Book")) {
+                return 5;
+            } else {
+                return 0;
+            }
+        }
+    }
     
     public static void main(String[] args) {
         {
@@ -174,6 +182,15 @@ public class ShoppingCartDiscounts {
             assert(cart.getDiscountPercentage() == 5);
         }
 
+        // SOLUTION 3: JUST A FUNCTION
+        List<String> empty = new ArrayList<>();
+        assert(ShoppingCart.getDiscountPercentage(empty) == 0);
+
+        List<String> justApple = Arrays.asList("Apple");
+        assert(ShoppingCart.getDiscountPercentage(justApple) == 0);
+
+        List<String> appleAndBook = Arrays.asList("Apple", "Book");
+        assert(ShoppingCart.getDiscountPercentage(appleAndBook) == 5);
 
     }
 }

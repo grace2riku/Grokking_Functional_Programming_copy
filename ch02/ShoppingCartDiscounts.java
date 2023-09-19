@@ -83,6 +83,32 @@ public class ShoppingCartDiscounts {
         }
     }
 
+
+    static class ShoppingCartRecalculating {  // named ShoppingCart in the book
+        private List<String> items = new ArrayList<>();
+
+        public void addItem(String item) {
+            items.add(item);
+        }
+        
+        public int getDiscountPercentage() {
+            if (items.contains("Book")) {
+                return 5;
+            } else {
+                return 0;
+            }
+        }
+
+        public List<String> getItems() {
+            return new ArrayList<>(items);
+        }
+
+        public void removeItem(String item) {
+            items.remove(item);
+        }
+    }
+
+
     
     public static void main(String[] args) {
         {
@@ -135,5 +161,19 @@ public class ShoppingCartDiscounts {
             assert(cart.getItems().contains("Book"));   // a book is in the cart
             assert(cart.getDiscountPercentage() == 0);  // BUT THE DISCOUNT IS 0!!!
         }
+
+        // SOLUTION 2: RECALCULATING ch02 2.6
+        {
+            ShoppingCartRecalculating cart = new ShoppingCartRecalculating();
+            cart.addItem("Book");
+            cart.addItem("Book");
+            assert(cart.getDiscountPercentage() == 5);
+            cart.removeItem("Book");
+
+            assert(cart.getItems().contains("Book"));
+            assert(cart.getDiscountPercentage() == 5);
+        }
+
+
     }
 }

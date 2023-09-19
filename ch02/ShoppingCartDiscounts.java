@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ShoppingCartDiscounts {
-    static class ShoppingCart {
+    static class ShoppingCartBad { // named ShoppingCart in the book
         private List<String> items = new ArrayList<>();
         private boolean bookAdded = false;
 
@@ -112,7 +112,7 @@ public class ShoppingCartDiscounts {
     
     public static void main(String[] args) {
         {
-            ShoppingCart cart = new ShoppingCart();
+            ShoppingCartBad cart = new ShoppingCartBad();
             cart.addItem("Apple");
             assert(cart.getDiscountPercentage() == 0);
             System.out.println(cart.getDiscountPercentage());

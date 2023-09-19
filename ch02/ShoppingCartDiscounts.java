@@ -192,5 +192,17 @@ public class ShoppingCartDiscounts {
         List<String> appleAndBook = Arrays.asList("Apple", "Book");
         assert(ShoppingCart.getDiscountPercentage(appleAndBook) == 5);
 
+        // imperative usage
+        List<String> items = new ArrayList<>();
+        assert(ShoppingCart.getDiscountPercentage(items) == 0);
+        System.out.println(ShoppingCart.getDiscountPercentage(items));
+
+        items.add("Apple");
+        assert(ShoppingCart.getDiscountPercentage(items) == 0);
+        System.out.println(ShoppingCart.getDiscountPercentage(items));
+
+        items.add("Book");
+        assert(ShoppingCart.getDiscountPercentage(items) == 5);
+        System.out.println(ShoppingCart.getDiscountPercentage(items));
     }
 }
